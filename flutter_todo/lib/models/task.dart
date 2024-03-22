@@ -1,4 +1,4 @@
-abstract class Task {
+class Task {
   String name;
   bool isCompleted;
 

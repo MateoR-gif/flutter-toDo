@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/views/gepeto.dart';
+import 'package:flutter_todo/models/task.dart';
 
 class ToDoListScreen extends StatefulWidget {
   @override
