@@ -45,6 +45,14 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
                     : TextDecoration.none,
               ),
             ),
+            leading: Checkbox(
+              value: _tasks[index].isCompleted,
+              onChanged: (_) => _toggleTask(index),
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () => _deleteTask(index),
+            ),
           );
         },
       ),
