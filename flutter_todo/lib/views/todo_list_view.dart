@@ -7,11 +7,25 @@ class ToDoListScreen extends StatefulWidget {
 }
 
 class _ToDoListScreenState extends State<ToDoListScreen> {
-  List<Task> _tasks = [
-    Task(name: 'Tarea 1', isCompleted: false),
-    Task(name: 'Tarea 2', isCompleted: true),
-  ];
+  List<Task> _tasks = [];
 
+  void _addTask(String taskName) {
+    setState(() {
+      _tasks.add(Task(name: taskName));
+    });
+  }
+
+  void _toggleTask(int index) {
+    setState(() {
+      _tasks[index].isCompleted = !_tasks[index].isCompleted;
+    });
+  }
+
+  void _deleteTask(int index) {
+    setState(() {
+      _tasks.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
