@@ -56,6 +56,42 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final newTaskName = await showDialog<String>(
+            context: context,
+            builder: (context) {
+              String taskName = '';
+              return AlertDialog(
+                title: Text('Agregar Tarea'),
+                content: TextField(
+                  onChanged: (value) {
+                    taskName = value;
+                  },
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Cancelar'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, taskName);
+                    },
+                    child: Text('Agregar'),
+                  ),
+                ],
+              );
+            },
+          );
+          if (newTaskName != null && newTaskName.isNotEmpty) {
+            _addTask(newTaskName);
+          }
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
