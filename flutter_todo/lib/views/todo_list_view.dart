@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/controller/TaskController.dart';
 import 'package:flutter_todo/models/task.dart';
 
 class ToDoListScreen extends StatefulWidget {
@@ -7,12 +8,16 @@ class ToDoListScreen extends StatefulWidget {
 }
 
 class _ToDoListScreenState extends State<ToDoListScreen> {
+  TaskController _controller = TaskController();
   List<Task> _tasks = [];
 
   void _addTask(String taskName) {
     setState(() {
       _tasks.add(Task(name: taskName));
     });
+    _controller.create(Task(name: taskName))
+    .then((id)=> print(id))
+    .catchError((e) => print(e));
   }
 
   void _toggleTask(int index) {
@@ -25,6 +30,8 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
     setState(() {
       _tasks.removeAt(index);
     });
+
+    _controller.remove('1');
   }
 
   @override

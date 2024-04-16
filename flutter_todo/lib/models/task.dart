@@ -3,4 +3,11 @@ class Task {
   bool isCompleted;
 
   Task({required this.name, this.isCompleted = false});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'isCompleted': isCompleted,
+    };
+  }
 }
